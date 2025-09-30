@@ -29,7 +29,7 @@ servidor.post("/carrito/quitar", (req, res) => {
   res.redirect("/carrito");
 });
 
-// Ver carrito
+// Ver carrito kkk
 servidor.get("/carrito", (req, res) => {
   const total = carrito.reduce((acc, p) => acc + p.precio, 0);
   res.render("carrito", { carrito, total, menu, titulo: "Carrito" });
