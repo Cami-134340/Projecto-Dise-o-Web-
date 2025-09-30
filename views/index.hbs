@@ -3,9 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>pagina de inicio</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    pagina de inicio
+  {{> header}}
+
+  <main>
+    <h2>Productos destacados</h2>
+    <ul class="productos">
+    {{#each productos}}
+    <div class="producto">
+      <li>
+        <img src="{{this.imagen}}" alt="{{this.nombre}}" style="width:100%; height:150px; object-fit:cover; border-radius:6px;">
+        <h3>{{nombre}}</h3>
+        <p>{{descripcion}}</p>
+        <p>Precio: ${{precio}}</p>
+        <form action="/carrito/agregar" method="POST" style="display:inline">
+          <input type="hidden" name="id" value="{{id}}">
+          <button type="submit">Añadir al carrito</button>
+        </form>
+      </li>
+    </div>
+    {{/each}}
+  </ul>
+
+  </main>
+
+  {{> footer}}
 </body>
 </html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{titulo}}</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  {{> header}}
+
+<main style="padding: 20px;">
+  <h2>Carrito</h2>
+
+  {{#if carrito.length}}
+    <ul class="carrito">
+      {{#each carrito}}
+      <div class="carrito-item">
+        <li>
+          <img src="{{imagen}}" alt="{{nombre}}" style="width:80px; height:80px; object-fit:cover; border-radius:4px; margin-right:10px;">
+          <div style="flex:1">
+            {{this.nombre}} - ${{this.precio}}
+          </div>
+          <form action="/carrito/quitar" method="POST" style="display:inline">
+            <input type="hidden" name="id" value="{{this.id}}">
+            <button type="submit">Quitar</button>
+          </form>
+        </li>
+        </div>
+      {{/each}}
+    </ul>
+    <p>Total: ${{total}}</p>
+    <form action="/carrito/finalizar" method="POST">
+      <button type="submit">Finalizar compra</button>
+    </form>
+    {{#if mensaje}}
+      <p style="color:green; margin-top:10px">{{mensaje}}</p>
+    {{/if}}
+  {{else}}
+    <p>El carrito está vacío.</p>
+  {{/if}}
+</main>
+
+
+  {{> footer}}
+</body>
+</html>

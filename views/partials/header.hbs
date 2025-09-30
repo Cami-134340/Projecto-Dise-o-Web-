@@ -1,0 +1,11 @@
+<header>
+  <div class="titulo">
+  <h1>Artículos para el hogar</h1>
+  </div>
+    <div class="menu">
+    {{#each menu}}
+      <a href="{{ruta}}"><button>{{ this.nombre }}</button></a>
+    {{/each}}
+    <a href="/login"><button>Login</button></a>
+    </div>
+</header>
